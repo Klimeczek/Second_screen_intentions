@@ -63,4 +63,9 @@
 
     <string name="order_confirmed">Zamówienie nr %1$d złożone</string>
     <string name="order_cancelled">Zrezygnowano, możesz poprawić dane</string>
+
+    <string name="btn_about">O APLIKACJI</string>
+    <string name="title_about">O aplikacji</string>
+    <string name="about_header">O aplikacji</string>
+    <string name="about_text">Aplikacja do zamawiania pizzy.\nWersja 1.0\nProjekt zaliczeniowy.</string>
 </resources>
