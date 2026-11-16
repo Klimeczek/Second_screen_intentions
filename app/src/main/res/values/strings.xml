@@ -1,30 +1,66 @@
 <resources>
-    <string name="app_name">Dwa ekrany</string>
+    <string name="app_name">Zamówienie pizzy</string>
 
-    <string name="header_form">Zapisy na kurs</string>
+    <string name="header">Zamówienie pizzy</string>
     <string name="label_name">Imię i nazwisko</string>
-    <string name="label_email">Adres e-mail</string>
-    <string name="label_course">Kurs</string>
-    <string name="label_level">Poziom zaawansowania</string>
-    <string name="newsletter">Chcę dostawać newsletter</string>
-    <string name="btn_next">DALEJ</string>
+    <string name="label_phone">Telefon</string>
+    <string name="label_pizza">Rodzaj pizzy</string>
+    <string name="label_size">Rozmiar</string>
+    <string name="label_quantity">Ilość sztuk</string>
+    <string name="label_toppings">Dodatki</string>
 
-    <string name="header_summary">Sprawdź dane</string>
-    <string name="btn_confirm">POTWIERDŹ</string>
-    <string name="btn_edit">POPRAW DANE</string>
-    <string name="btn_share">Udostępnij</string>
+    <string name="hint_name">Jan Kowalski</string>
+    <string name="hint_phone">123 456 789</string>
+    <string name="size_small">Mała</string>
+    <string name="size_medium">Średnia</string>
+    <string name="size_large">Duża</string>
+    <string name="topping_cheese">Dodatkowy ser</string>
+    <string name="topping_pepperoni">Pepperoni</string>
+    <string name="topping_mushrooms">Pieczarki</string>
+    <string name="delivery">Dostawa do domu</string>
+    <string name="hint_address">Ulica, numer, miasto</string>
+    <string name="terms">Akceptuję regulamin zamówień</string>
+    <string name="btn_submit">DALEJ: PODSUMOWANIE</string>
 
-    <string name="summary_format">Imię: %1$s\nE-mail: %2$s\nKurs: %3$s\nPoziom: %4$d/10\nNewsletter: %5$s</string>
+    <string name="error_name">Podaj imię i nazwisko</string>
+    <string name="error_phone">Podaj poprawny numer telefonu</string>
+    <string name="error_pizza">Wybierz rodzaj pizzy</string>
+    <string name="error_size">Wybierz rozmiar</string>
+    <string name="error_address">Podaj adres dostawy</string>
+
+    <string name="undo">Cofnij</string>
+
+    <string name="summary_format">%1$s\nTel: %2$s\nPizza: %3$s\nRozmiar: %4$s\nIlość: %5$d\nDodatki: %6$s\nDostawa: %7$s</string>
     <string name="yes_short">tak</string>
     <string name="no_short">nie</string>
+    <string name="no_toppings">brak</string>
 
-    <string name="registered">Zapisano, numer zgłoszenia %1$s</string>
-    <string name="share_via">Udostępnij przez</string>
-    <string name="error_no_app">Brak aplikacji do obsługi tej czynności</string>
-
-    <string-array name="courses">
-        <item>Programowanie w Javie</item>
-        <item>Aplikacje mobilne</item>
-        <item>Bazy danych</item>
+    <string-array name="pizzas">
+        <item>-- wybierz pizzę --</item>
+        <item>Margherita</item>
+        <item>Pepperoni</item>
+        <item>Hawajska</item>
+        <item>Quattro Formaggi</item>
+        <item>Wegetariańska</item>
     </string-array>
+
+    <string name="clear_form">Wyczyść formularz</string>
+    <string name="clear_title">Wyczyścić formularz?</string>
+    <string name="clear_message">Wszystkie wprowadzone dane zostaną usunięte.</string>
+    <string name="clear_yes">Tak, wyczyść</string>
+    <string name="clear_cancel">Anuluj</string>
+    <string name="cleared">Formularz wyczyszczony</string>
+
+    <string name="title_summary">Podsumowanie</string>
+    <string name="summary_header">Podsumowanie</string>
+    <string name="price_format">Do zapłaty: %1$d zł</string>
+    <string name="btn_confirm">POTWIERDŹ ZAMÓWIENIE</string>
+    <string name="btn_edit">POPRAW</string>
+    <string name="btn_share">UDOSTĘPNIJ</string>
+    <string name="share_subject">Moje zamówienie pizzy</string>
+    <string name="share_chooser">Udostępnij zamówienie</string>
+    <string name="error_no_share_app">Brak aplikacji do udostępniania</string>
+
+    <string name="order_confirmed">Zamówienie nr %1$d złożone</string>
+    <string name="order_cancelled">Zrezygnowano, możesz poprawić dane</string>
 </resources>
