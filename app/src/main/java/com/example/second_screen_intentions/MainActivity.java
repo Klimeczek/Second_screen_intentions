@@ -13,13 +13,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.second_screen_intentions.R;
+import com.example.second_screen_intentions.SummaryActivity;
+import com.google.android.material.snackbar.Snackbar;
 
-    private EditText etName, etEmail;
-    private Spinner spCourse;
-    private SeekBar sbLevel;
-    private TextView tvLevelValue;
-    private CheckBox cbNewsletter;
+public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<Intent> summaryLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -30,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
                     showRegistered(number);
                 }
             });
+
+    private EditText etName, etEmail;
+    private Spinner spCourse;
+    private SeekBar sbLevel;
+    private TextView tvLevelValue;
+    private CheckBox cbNewsletter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         setUpLevelSeekBar();
 
         findViewById(R.id.btnNext).setOnClickListener(v -> openSummary());
-
     }
 
     private void setUpCourseSpinner() {

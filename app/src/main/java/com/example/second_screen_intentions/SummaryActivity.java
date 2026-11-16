@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.second_screen_intentions.R;
+
 import java.util.Random;
 
 public class SummaryActivity extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class SummaryActivity extends AppCompatActivity {
     public static final String EXTRA_COURSE = "com.example.dwaekrany.COURSE";
     public static final String EXTRA_LEVEL = "com.example.dwaekrany.LEVEL";
     public static final String EXTRA_NEWSLETTER = "com.example.dwaekrany.NEWSLETTER";
+    public static final String EXTRA_NUMBER = "com.example.dwaekrany.NUMBER";
 
     private TextView tvSummary;
 
@@ -28,9 +31,8 @@ public class SummaryActivity extends AppCompatActivity {
         tvSummary = findViewById(R.id.tvSummary);
         tvSummary.setText(buildSummary());
 
-        findViewById(R.id.btnEdit).setOnClickListener(v -> finish());
-        findViewById(R.id.btnConfirm).setOnClickListener(v -> finish());
         findViewById(R.id.btnConfirm).setOnClickListener(v -> confirm());
+        findViewById(R.id.btnEdit).setOnClickListener(v -> finish());
         findViewById(R.id.btnShare).setOnClickListener(v -> share());
     }
 
@@ -49,8 +51,6 @@ public class SummaryActivity extends AppCompatActivity {
 
         return getString(R.string.summary_format, name, email, course, level, newsletterText);
     }
-
-    public static final String EXTRA_NUMBER = "com.example.dwaekrany.NUMBER";
 
     private void confirm() {
         String number = "ZG/" + (1000 + new Random().nextInt(9000));
