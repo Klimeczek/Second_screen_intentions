@@ -2,6 +2,7 @@ package com.example.second_screen_intentions;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.second_screen_intentions.R;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "STOS";
 
     private static final int[] BASE_PRICES = {0, 25, 29, 30, 33, 31};
     private static final int PRICE_MEDIUM = 6;
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvQuantityValue;
     private CheckBox cbCheese, cbPepperoni, cbMushrooms, cbTerms;
     private MaterialSwitch swDelivery;
-    private Button btnSubmit, btnClear;
+    private Button btnSubmit, btnClear, btnAbout;
 
     private String savedName = "";
     private String savedPhone = "";
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean savedMushrooms = false;
     private boolean savedDelivery = false;
     private boolean savedTerms = false;
+
     private final ActivityResultLauncher<Intent> summaryLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == RESULT_OK) {
@@ -65,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                             getString(R.string.order_confirmed, orderNumber),
                             Snackbar.LENGTH_LONG).show();
                 } else {
-
                     Toast.makeText(this, R.string.order_cancelled, Toast.LENGTH_SHORT).show();
                 }
             });
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "MainActivity onCreate");
         setContentView(R.layout.activity_main);
 
         etName = findViewById(R.id.etName);
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         swDelivery = findViewById(R.id.swDelivery);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnClear = findViewById(R.id.btnClear);
+        btnAbout = findViewById(R.id.btnAbout);
 
         setUpPizzaSpinner();
         setUpListeners();
@@ -121,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnClear.setOnClickListener(v -> askForClearConfirmation());
+
+        btnAbout.setOnClickListener(v ->
+                startActivity(new Intent(this, AboutActivity.class)));
 
         sbQuantity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -315,5 +324,17 @@ public class MainActivity extends AppCompatActivity {
 
         cbTerms.setChecked(savedTerms);
         btnSubmit.setEnabled(savedTerms);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "MainActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "MainActivity onDestroy");
     }
 }

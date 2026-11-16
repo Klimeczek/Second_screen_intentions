@@ -3,17 +3,18 @@ package com.example.second_screen_intentions;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.second_screen_intentions.R;
-
 import java.util.Random;
 
 public class SummaryActivity extends AppCompatActivity {
+
+    private static final String TAG = "STOS";
 
     public static final String EXTRA_NAME = "com.example.second_screen_intentions.EXTRA_NAME";
     public static final String EXTRA_PHONE = "com.example.second_screen_intentions.EXTRA_PHONE";
@@ -32,6 +33,7 @@ public class SummaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "SummaryActivity onCreate");
         setContentView(R.layout.activity_summary);
 
         if (getSupportActionBar() != null) {
@@ -96,5 +98,17 @@ public class SummaryActivity extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         finish();
         return true;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "SummaryActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "SummaryActivity onDestroy");
     }
 }
