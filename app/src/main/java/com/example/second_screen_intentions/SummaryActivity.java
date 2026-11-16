@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 public class SummaryActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "com.example.dwaekrany.NAME";
@@ -26,6 +28,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         findViewById(R.id.btnEdit).setOnClickListener(v -> finish());
         findViewById(R.id.btnConfirm).setOnClickListener(v -> finish());
+        findViewById(R.id.btnConfirm).setOnClickListener(v -> confirm());
     }
 
     private String buildSummary() {
@@ -42,5 +45,16 @@ public class SummaryActivity extends AppCompatActivity {
                 : getString(R.string.no_short);
 
         return getString(R.string.summary_format, name, email, course, level, newsletterText);
+    }
+
+    public static final String EXTRA_NUMBER = "com.example.dwaekrany.NUMBER";
+
+    private void confirm() {
+        String number = "ZG/" + (1000 + new Random().nextInt(9000));
+
+        Intent result = new Intent();
+        result.putExtra(EXTRA_NUMBER, number);
+        setResult(RESULT_OK, result);
+        finish();
     }
 }

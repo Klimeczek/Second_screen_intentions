@@ -9,6 +9,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar sbLevel;
     private TextView tvLevelValue;
     private CheckBox cbNewsletter;
+
+    private final ActivityResultLauncher<Intent> summaryLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    String number = result.getData()
+                            .getStringExtra(SummaryActivity.EXTRA_NUMBER);
+                    showRegistered(number);
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setUpLevelSeekBar();
 
         findViewById(R.id.btnNext).setOnClickListener(v -> openSummary());
+
     }
 
     private void setUpCourseSpinner() {
@@ -67,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(SummaryActivity.EXTRA_COURSE, spCourse.getSelectedItem().toString());
         intent.putExtra(SummaryActivity.EXTRA_LEVEL, sbLevel.getProgress());
         intent.putExtra(SummaryActivity.EXTRA_NEWSLETTER, cbNewsletter.isChecked());
-        startActivity(intent);
+
+        summaryLauncher.launch(intent);
+    }
+
+    private void showRegistered(String number) {
+        Snackbar.make(findViewById(R.id.main),
+                getString(R.string.registered, number),
+                Snackbar.LENGTH_LONG).show();
     }
 }
